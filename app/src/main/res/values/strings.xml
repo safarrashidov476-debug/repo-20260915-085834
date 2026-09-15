@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gemini Sharh</string>
+    <string name="settings_title">Sozlamalar</string>
+    <string name="api_key_hint">Google Gemini API kaliti</string>
+    <string name="api_key_label">API kalit</string>
+    <string name="save">Saqlash</string>
+    <string name="pick_video">Video tanlash</string>
+    <string name="start_process">Tavsif yaratish</string>
+    <string name="processing">Ishlanmoqda…</string>
+    <string name="no_api_key">Avval API kalitini sozlamalarda saqlang</string>
+    <string name="select_video_first">Avval video tanlang</string>
+    <string name="success">Muvaffaqiyatli yakunlandi</string>
+    <string name="error_generic">Xatolik yuz berdi</string>
+    <string name="request_delay">So\'rovlar orasidagi kechikish (soniya)</string>
+    <string name="language">Til</string>
+    <string name="voice_gender">Ovoz jinsi</string>
+    <string name="male">Erkak</string>
+    <string name="female">Ayol</string>
+    <string name="open_settings">Sozlamalar</string>
+    <string name="status_ready">Tayyor</string>
+    <string name="status_uploading">Video yuklanmoqda…</string>
+    <string name="status_analyzing">Gemini tahlil qilmoqda…</string>
+    <string name="status_tts">Audio yaratilmoqda…</string>
+    <string name="status_tts_progress">Audio yaratilmoqda… (%1$d/%2$d)</string>
+    <string name="status_saving">Fayllar saqlanmoqda…</string>
+    <string name="status_merging">Video yaratilmoqda (ovoz birlashtirilmoqda)…</string>
+    <string name="output_folder">Natija papkasi ochildi</string>
+    <string name="get_api_key">API kalit olish (brauzer)</string>
+    <string name="test_api">API kalitni tekshirish</string>
+    <string name="api_ok">API kalit ishlayapti</string>
+    <string name="api_fail">API kalit xato yoki tarmoq muammosi</string>
+</resources>

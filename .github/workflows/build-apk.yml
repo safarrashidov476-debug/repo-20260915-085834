@@ -1,0 +1,63 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: |
+          if [ -f ./gradlew ]; then
+            chmod +x ./gradlew
+          else
+            # Generate wrapper if missing (first push)
+            gradle wrapper --gradle-version 8.7 || true
+            chmod +x ./gradlew || true
+          fi
+
+      - name: Build Debug APK
+        run: |
+          if [ -f ./gradlew ]; then
+            ./gradlew assembleDebug --stacktrace
+          else
+            # Fallback: use system gradle after generating project files
+            gradle assembleDebug --stacktrace
+          fi
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-sharh-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Build Release APK (unsigned)
+        run: |
+          if [ -f ./gradlew ]; then
+            ./gradlew assembleRelease --stacktrace || true
+          fi
+
+      - name: Upload Release APK (if exists)
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-sharh-release-apk
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: ignore
+          retention-days: 14
